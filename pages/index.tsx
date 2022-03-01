@@ -3,8 +3,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
 import { sanityClient } from '../sanity'
+import { Post } from '../typings'
 
-const Home: NextPage = () => {
+interface Props {
+  posts: [Post]
+}
+const Home = ({ posts }: Props) => {
+  console.log(posts)
   return (
     <div className="mx-auto max-w-7xl">
       <Head>
@@ -39,7 +44,7 @@ const Home: NextPage = () => {
 
 export default Home
 
-export const getServerSdieProps = async () => {
+export const getServerSideProps = async () => {
   const query = `*[_type == "post"]{
   _id,
   title,
