@@ -44,6 +44,17 @@ const Home = ({ posts }: Props) => {
           <Link key={post._id} href={`/post/${post.slug.current}`}>
             <div>
               <img src={urlFor(post.mainImage).url()!} alt="" />
+              <div>
+                <div>
+                  <p>{post.title}</p>
+                  <p>
+                    {post.description} by {post.author.name}
+                  </p>
+                </div>
+              </div>
+              {post.author.image && (
+                <img src={urlFor(post.author.image).url()!} alt="" />
+              )}
             </div>
           </Link>
         ))}
@@ -60,7 +71,7 @@ export const getServerSideProps = async () => {
   title,
   author ->{
   name,
-  iamge
+  image
 },
   slug,
   description,
