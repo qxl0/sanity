@@ -1,17 +1,28 @@
 import { GetStaticProps } from 'next'
 import React from 'react'
 import Header from '../../components/Header'
-import { sanityClient } from '../../sanity'
+import { sanityClient, urlFor } from '../../sanity'
 import { Post } from '../../typings'
 
 interface Props {
   post: Post
 }
 function Post({ post }: Props) {
-  console.log(post)
   return (
     <main>
       <Header />
+      <img
+        src={urlFor(post.mainImage).url()}
+        className="h-40 w-full object-cover"
+        alt=""
+      />
+
+      <article className="mx-auto max-w-3xl p-5">
+        <h1 className="mt-10 mb-3 text-3xl">{post.title}</h1>
+        <h2 className="text-gray500 mb-2 text-xl font-light">
+          {post.description}
+        </h2>
+      </article>
     </main>
   )
 }
