@@ -1,23 +1,29 @@
+import { GetStaticProps } from 'next'
 import React from 'react'
 import Header from '../../components/Header'
 import { sanityClient } from '../../sanity'
 import { Post } from '../../typings'
 
-function Post() {
+interface Props {
+  post: Post
+}
+function Post({ post }: Props) {
+  console.log(post)
   return (
     <main>
       <Header />
     </main>
   )
 }
+export default Post
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "post"]{
   _id,
   slug {
-  current
-}
-}`
+    current
+  }
+  }`
 
   const posts = await sanityClient.fetch(query)
 
@@ -48,6 +54,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       body
       }`
   const post = await sanityClient.fetch(query, {
-    slug: params.slug,
+    slug: params?.slug,
   })
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
 }
