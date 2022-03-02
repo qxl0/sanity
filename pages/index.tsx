@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '../components/Header'
-import { sanityClient } from '../sanity'
+import { sanityClient, urlFor } from '../sanity'
 import { Post } from '../typings'
 
 interface Props {
@@ -42,7 +42,9 @@ const Home = ({ posts }: Props) => {
       <div>
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
-            i am a post
+            <div>
+              <img src={urlFor(post.mainImage).url()!} alt="" />
+            </div>
           </Link>
         ))}
       </div>
