@@ -59,6 +59,23 @@ function Post({ post }: Props) {
           />
         </div>
       </article>
+
+      <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
+
+      <form className="mx-auto mb-10 flex max-w-2xl flex-col p-5">
+        <label htmlFor="">
+          <span>Name</span>
+          <input type="text" placeholder="John Appleseed" />
+        </label>
+        <label htmlFor="">
+          <span>Email</span>
+          <input type="text" placeholder="John Appleseed" />
+        </label>
+        <label htmlFor="">
+          <span>Comment</span>
+          <input type="text" placeholder="John Appleseed" />
+        </label>
+      </form>
     </main>
   )
 }
