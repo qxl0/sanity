@@ -4,11 +4,17 @@ import PortableText from 'react-portable-text'
 import Header from '../../components/Header'
 import { sanityClient, urlFor } from '../../sanity'
 import { Post } from '../../typings'
+import { useForm, SubmitHandler } from 'react-hook-form'
 
 interface Props {
   post: Post
 }
 function Post({ post }: Props) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
   return (
     <main>
       <Header />
