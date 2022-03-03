@@ -6,6 +6,12 @@ import { sanityClient, urlFor } from '../../sanity'
 import { Post } from '../../typings'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
+interface IFormInput {
+  _id: string
+  name: string
+  email: string
+  comment: string
+}
 interface Props {
   post: Post
 }
@@ -14,7 +20,7 @@ function Post({ post }: Props) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm<IFormInput>()
   return (
     <main>
       <Header />
@@ -72,9 +78,12 @@ function Post({ post }: Props) {
         <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
         <h4 className="text-3xl font-bold">Leave a comment below</h4>
         <hr className="mt-2 py-3" />
+
+        <input type="hidden" {...register('_id')} name="_id" value={post._id} />
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Name</span>
           <input
+            {...(register('name'), { required: true })}
             className="form-input mt-1 block w-full rounded border py-2 px-3 shadow outline-none ring-yellow-500 focus:ring"
             type="text"
             placeholder="John Appleseed"
@@ -83,6 +92,7 @@ function Post({ post }: Props) {
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Email</span>
           <input
+            {...(register('email'), { required: true })}
             className="form-input mt-1 block w-full rounded border py-2 px-3 shadow outline-none ring-yellow-500 focus:ring"
             type="text"
             placeholder="John Appleseed"
@@ -91,6 +101,7 @@ function Post({ post }: Props) {
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Comment</span>
           <textarea
+            {...(register('comment'), { required: true })}
             className="rouned form-textarea mt-1 w-full border py-2 px-3 shadow outline-none ring-yellow-500 focus:ring"
             placeholder="John Appleseed"
             rows={8}
