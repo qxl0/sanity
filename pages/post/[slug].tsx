@@ -84,7 +84,11 @@ function Post({ post }: Props) {
         </label>
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Comment</span>
-          <textarea placeholder="John Appleseed" rows={8} />
+          <textarea
+            className="rouned form-textarea mt-1 w-full border py-2 px-3 shadow ring-yellow-500 "
+            placeholder="John Appleseed"
+            rows={8}
+          />
         </label>
       </form>
     </main>
