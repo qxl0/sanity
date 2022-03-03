@@ -38,7 +38,7 @@ function Post({ post }: Props) {
         <div>
           <PortableText
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-            projectId={process.env.NEXT_PUBLIC_SANTY_PROJECT_ID}
+            projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
             content={post.body}
             serializers={{
               h1: (props: any) => (
