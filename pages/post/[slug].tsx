@@ -73,7 +73,7 @@ function Post({ post }: Props) {
         </label>
         <label htmlFor="">
           <span>Comment</span>
-          <input type="text" placeholder="John Appleseed" />
+          <textarea placeholder="John Appleseed" rows={8} />
         </label>
       </form>
     </main>
