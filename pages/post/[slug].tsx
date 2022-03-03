@@ -107,6 +107,23 @@ function Post({ post }: Props) {
             rows={8}
           />
         </label>
+
+        <div className="flex p-5">
+          {errors.name && (
+            <span className="text-red-500">The Name Field is required</span>
+          )}
+          {errors.comment && (
+            <span className="text-red-500">The comment Field is required</span>
+          )}
+          {errors.email && (
+            <span className="text-red-500">The Email Field is required</span>
+          )}
+        </div>
+
+        <input
+          type="submit"
+          className="focus:shadow-outline cursor-pointer rounded bg-yellow-500 py-2 px-4 font-bold text-white hover:bg-yellow-400 focus:outline-none "
+        />
       </form>
     </main>
   )
