@@ -68,11 +68,19 @@ function Post({ post }: Props) {
         <hr className="mt-2 py-3" />
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Name</span>
-          <input type="text" placeholder="John Appleseed" />
+          <input
+            className="form-input mt-1 block w-full rounded border py-2 px-3 shadow ring-yellow-500"
+            type="text"
+            placeholder="John Appleseed"
+          />
         </label>
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Email</span>
-          <input type="text" placeholder="John Appleseed" />
+          <input
+            className="form-input mt-1 block w-full rounded border py-2 px-3 shadow ring-yellow-500"
+            type="text"
+            placeholder="John Appleseed"
+          />
         </label>
         <label className="mb-5 block" htmlFor="">
           <span className="text-gray-700">Comment</span>
