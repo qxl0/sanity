@@ -22,6 +22,17 @@ function Post({ post }: Props) {
         <h2 className="text-gray500 mb-2 text-xl font-light">
           {post.description}
         </h2>
+        <div>
+          <img
+            className="h-10 w-10 rounded-full"
+            src={urlFor(post.author.image).url()}
+            alt=""
+          />
+          <p className="text-sm font-extralight">
+            Blog post by {post.author.name} - Published at{' '}
+            {new Date(post._createdAt).toLocaleString()}
+          </p>
+        </div>
       </article>
     </main>
   )
