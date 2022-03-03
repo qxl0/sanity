@@ -66,16 +66,16 @@ function Post({ post }: Props) {
         <h3 className="text-sm text-yellow-500">Enjoyed this article?</h3>
         <h4 className="text-3xl font-bold">Leave a comment below</h4>
         <hr className="mt-2 py-3" />
-        <label htmlFor="">
-          <span>Name</span>
+        <label className="mb-5 block" htmlFor="">
+          <span className="text-gray-700">Name</span>
           <input type="text" placeholder="John Appleseed" />
         </label>
-        <label htmlFor="">
-          <span>Email</span>
+        <label className="mb-5 block" htmlFor="">
+          <span className="text-gray-700">Email</span>
           <input type="text" placeholder="John Appleseed" />
         </label>
-        <label htmlFor="">
-          <span>Comment</span>
+        <label className="mb-5 block" htmlFor="">
+          <span className="text-gray-700">Comment</span>
           <textarea placeholder="John Appleseed" rows={8} />
         </label>
       </form>
