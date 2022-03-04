@@ -160,6 +160,19 @@ function Post({ post }: Props) {
           />
         </form>
       )}
+
+      <div className="my-10 mx-auto flex max-w-2xl flex-col space-y-2 p-10 shadow shadow-yellow-500">
+        <h3 className="text-4xl">Comments</h3>
+        <hr className="pb-2" />
+        {post.comments.map((comment) => (
+          <div key={comment._id}>
+            <p>
+              <span className="pr-4 text-yellow-500">{comment.name}</span>:
+              {comment.comment}
+            </p>
+          </div>
+        ))}
+      </div>
     </main>
   )
 }
@@ -188,24 +201,19 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[_type == "post" && slug.current=="my-first-post"][0]{
-    _id,
-    _createdAt,
-    title,
-    author->{
-    name,
-    image
-  },
-    'comments': *[
-      _type == "comment" &&
-      post._ref == ^._id &&
-      approved == true
-    ],
-    description,
-    mainImage,
-    slug,
-    body
-  }`
+  const query = `*[_type == "post" && slug.current== $slug][0]{
+        _id,
+        _createdAt,
+        title,
+        author->{
+        name,
+        image
+      },
+      description,
+      mainImage,
+      slug,
+      body
+      }`
   const post = await sanityClient.fetch(query, {
     slug: params?.slug,
   })
