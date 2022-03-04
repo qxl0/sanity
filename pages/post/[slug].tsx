@@ -188,19 +188,24 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[_type == "post" && slug.current== $slug][0]{
-        _id,
-        _createdAt,
-        title,
-        author->{
-        name,
-        image
-      },
-      description,
-      mainImage,
-      slug,
-      body
-      }`
+  const query = `*[_type == "post" && slug.current=="my-first-post"][0]{
+    _id,
+    _createdAt,
+    title,
+    author->{
+    name,
+    image
+  },
+    'comments': *[
+      _type == "comment" &&
+      post._ref == ^._id &&
+      approved == true
+    ],
+    description,
+    mainImage,
+    slug,
+    body
+  }`
   const post = await sanityClient.fetch(query, {
     slug: params?.slug,
   })
