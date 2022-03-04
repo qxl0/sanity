@@ -167,8 +167,8 @@ function Post({ post }: Props) {
         {post.comments.map((comment) => (
           <div key={comment._id}>
             <p>
-              <span className="pr-4 text-yellow-500">{comment.name}</span>:
-              {comment.comment}
+              <span className="text-yellow-500">{comment.name}</span>:
+              <span className="px-2">{comment.comment}</span>
             </p>
           </div>
         ))}
